@@ -43,9 +43,10 @@
      *        HERO       *  
      ********************* -->
 
-<div class="notification is-warning" data-bulma="notification" style="margin-bottom: -6vh">
-  <button class="delete"></button>
-  <strong>WARNING: THIS IS FOR EXCLUSIVE USE WITH NESTEGG's TESTNET EXPERIMENTS.</strong> 
+<div class="notification is-danger" data-bulma="notification" style="margin-bottom: -6vh">
+  <h3>
+    <strong>Do you have <u>Metamask</u> installed?</strong> You must first install the <a href="https://metamask.io/" target="_blank">Metamask.io</a> browser plugin before continuing! This will let you use Ethereum IN the browser!
+  </h3> 
 </div>
 
 
@@ -135,9 +136,20 @@
             NestEgg EURO Token
           </h1>
           <h2 class="subtitle">
-            Make sure you are using the <strong>Rinkeby</strong> testnet.
+            Request €1 IOU tokens for use on the ethereum <strong>Rinkeby</strong> testnet.
           </h2>
-          <button class="button" id="showModal">Show</button>
+
+          <!-- <div class="notification is-danger">
+              <h4>
+                You must first install the <a href="https://metamask.io/" target="_blank">Metamask</a> browser plugin before continuing! This will let you use Ethereum IN the browser!
+              </h4>
+            </div> -->
+
+
+
+
+          
+          <button class="button" id="showModal">Request</button>
         </div>
       </div>
 
@@ -146,25 +158,32 @@
         <div class="modal-background"></div>
         <div class="modal-card">
           <header class="modal-card-head">
-            <p class="modal-card-title">Purchase TESTNET Euro Tokens</p>
+            <p class="modal-card-title">Request TESTNET Euro Tokens</p>
             <button class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
             <div class="notification is-danger">
                 <p>
-                  <em>Warning: This page is temporary and will not be used beyond stress testing our platform while on testnet. THIS IS EXPERIMENTAL! We're stress testing our platform with a small group of participants. Please use this at your own risk and contact us at NestEgg.eu for further questions.</em>
+                  Warning: euro.nestegg.eu is temporary! THIS IS EXPERIMENTAL! We're stress testing our platform with a small group of participants. Please use this at your own risk and contact us at NestEgg.eu for further questions. <br> <br>
+                  <em>While testing on testnet, we're issuing euro tokens representing €1 sent to NestEgg. Upon mainnet launch, NestEgg will switch to a stablecoin.</em>
                 </p>
               </div>
-            <p>
-              You are purchasing euro tokens to be used on NestEgg's experiments which crowdfund gadgets. While testing on testnet, we're issuing euro tokens representing €1 sent to NestEgg. We accept MainNet Eth or a bank wire (NL) and will send you rinkeby ERC20 euro tokens equivalent to your purchase plus some rinkeby eth so you can pay for transactions.
+            
+              <p><i class="fas fa-info-circle" style="margin-right: 7px"></i><strong>You are purchasing euro tokens for use in NestEgg's <a href="http://lockbox.nestegg.eu" target="_blank">LockBox</a> experiment to crowdfund gadgets.</strong> <br><br>You can purchase with (mainnet) ether OR with euro using a (european) bank wire. Upon your purchase, you'll receive (rinkeby testnet) ERC20 euro tokens equivalent to your purchase plus (rinkeby) ether to pay for transactions.
             </p>
-            <br><br>
-            <p>
-              First, send a payment via:<br> 
-              MainNet Ether to <code>0x0982389613913971987231</code> <br>
-              BANK Wire to <code>EN DROST INGB 0867 8789 4675 6876</code>
-              <br><br>
-            </p>
+            <br>
+
+            <div class="notification">
+                <p>
+                  First, make a payment to the following:<br><br> 
+                  MainNet Ether to <code>0x0982389613913971987231</code> <br>
+                  BANK Wire to <code>EN DROST INGB 0867 8789 4675 6876</code>
+                  <br><br>
+                </p>
+              </div>
+
+
+            
           </section>
           <footer class="modal-card-foot">
             <a href="code_index.html"><button class="button is-success">Then Request Tokens</button></a>
