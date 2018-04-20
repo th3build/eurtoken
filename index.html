@@ -1,19 +1,204 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>Poop</title>
-<script type="text/javascript">console.log('tinyrick')</script>
-</head>
-<body>
-<script>/* axios v0.17.1 | (c) 2017 by Matt Zabriskie */
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.axios=t():e.axios=t()}(this,function(){return function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={exports:{},id:r,loaded:!1};return e[r].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){"use strict";function r(e){var t=new s(e),n=i(s.prototype.request,t);return o.extend(n,s.prototype,t),o.extend(n,t),n}var o=n(2),i=n(3),s=n(5),u=n(6),a=r(u);a.Axios=s,a.create=function(e){return r(o.merge(u,e))},a.Cancel=n(23),a.CancelToken=n(24),a.isCancel=n(20),a.all=function(e){return Promise.all(e)},a.spread=n(25),e.exports=a,e.exports.default=a},function(e,t,n){"use strict";function r(e){return"[object Array]"===R.call(e)}function o(e){return"[object ArrayBuffer]"===R.call(e)}function i(e){return"undefined"!=typeof FormData&&e instanceof FormData}function s(e){var t;return t="undefined"!=typeof ArrayBuffer&&ArrayBuffer.isView?ArrayBuffer.isView(e):e&&e.buffer&&e.buffer instanceof ArrayBuffer}function u(e){return"string"==typeof e}function a(e){return"number"==typeof e}function c(e){return"undefined"==typeof e}function f(e){return null!==e&&"object"==typeof e}function p(e){return"[object Date]"===R.call(e)}function d(e){return"[object File]"===R.call(e)}function l(e){return"[object Blob]"===R.call(e)}function h(e){return"[object Function]"===R.call(e)}function m(e){return f(e)&&h(e.pipe)}function y(e){return"undefined"!=typeof URLSearchParams&&e instanceof URLSearchParams}function w(e){return e.replace(/^\s*/,"").replace(/\s*$/,"")}function g(){return("undefined"==typeof navigator||"ReactNative"!==navigator.product)&&("undefined"!=typeof window&&"undefined"!=typeof document)}function v(e,t){if(null!==e&&"undefined"!=typeof e)if("object"!=typeof e&&(e=[e]),r(e))for(var n=0,o=e.length;n<o;n++)t.call(null,e[n],n,e);else for(var i in e)Object.prototype.hasOwnProperty.call(e,i)&&t.call(null,e[i],i,e)}function x(){function e(e,n){"object"==typeof t[n]&&"object"==typeof e?t[n]=x(t[n],e):t[n]=e}for(var t={},n=0,r=arguments.length;n<r;n++)v(arguments[n],e);return t}function b(e,t,n){return v(t,function(t,r){n&&"function"==typeof t?e[r]=E(t,n):e[r]=t}),e}var E=n(3),C=n(4),R=Object.prototype.toString;e.exports={isArray:r,isArrayBuffer:o,isBuffer:C,isFormData:i,isArrayBufferView:s,isString:u,isNumber:a,isObject:f,isUndefined:c,isDate:p,isFile:d,isBlob:l,isFunction:h,isStream:m,isURLSearchParams:y,isStandardBrowserEnv:g,forEach:v,merge:x,extend:b,trim:w}},function(e,t){"use strict";e.exports=function(e,t){return function(){for(var n=new Array(arguments.length),r=0;r<n.length;r++)n[r]=arguments[r];return e.apply(t,n)}}},function(e,t){function n(e){return!!e.constructor&&"function"==typeof e.constructor.isBuffer&&e.constructor.isBuffer(e)}function r(e){return"function"==typeof e.readFloatLE&&"function"==typeof e.slice&&n(e.slice(0,0))}/*!
-	 * Determine if an object is a Buffer
-	 *
-	 * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
-	 * @license  MIT
-	 */
-e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t,n){"use strict";function r(e){this.defaults=e,this.interceptors={request:new s,response:new s}}var o=n(6),i=n(2),s=n(17),u=n(18);r.prototype.request=function(e){"string"==typeof e&&(e=i.merge({url:arguments[0]},arguments[1])),e=i.merge(o,this.defaults,{method:"get"},e),e.method=e.method.toLowerCase();var t=[u,void 0],n=Promise.resolve(e);for(this.interceptors.request.forEach(function(e){t.unshift(e.fulfilled,e.rejected)}),this.interceptors.response.forEach(function(e){t.push(e.fulfilled,e.rejected)});t.length;)n=n.then(t.shift(),t.shift());return n},i.forEach(["delete","get","head","options"],function(e){r.prototype[e]=function(t,n){return this.request(i.merge(n||{},{method:e,url:t}))}}),i.forEach(["post","put","patch"],function(e){r.prototype[e]=function(t,n,r){return this.request(i.merge(r||{},{method:e,url:t,data:n}))}}),e.exports=r},function(e,t,n){"use strict";function r(e,t){!i.isUndefined(e)&&i.isUndefined(e["Content-Type"])&&(e["Content-Type"]=t)}function o(){var e;return"undefined"!=typeof XMLHttpRequest?e=n(8):"undefined"!=typeof process&&(e=n(8)),e}var i=n(2),s=n(7),u={"Content-Type":"application/x-www-form-urlencoded"},a={adapter:o(),transformRequest:[function(e,t){return s(t,"Content-Type"),i.isFormData(e)||i.isArrayBuffer(e)||i.isBuffer(e)||i.isStream(e)||i.isFile(e)||i.isBlob(e)?e:i.isArrayBufferView(e)?e.buffer:i.isURLSearchParams(e)?(r(t,"application/x-www-form-urlencoded;charset=utf-8"),e.toString()):i.isObject(e)?(r(t,"application/json;charset=utf-8"),JSON.stringify(e)):e}],transformResponse:[function(e){if("string"==typeof e)try{e=JSON.parse(e)}catch(e){}return e}],timeout:0,xsrfCookieName:"XSRF-TOKEN",xsrfHeaderName:"X-XSRF-TOKEN",maxContentLength:-1,validateStatus:function(e){return e>=200&&e<300}};a.headers={common:{Accept:"application/json, text/plain, */*"}},i.forEach(["delete","get","head"],function(e){a.headers[e]={}}),i.forEach(["post","put","patch"],function(e){a.headers[e]=i.merge(u)}),e.exports=a},function(e,t,n){"use strict";var r=n(2);e.exports=function(e,t){r.forEach(e,function(n,r){r!==t&&r.toUpperCase()===t.toUpperCase()&&(e[t]=n,delete e[r])})}},function(e,t,n){"use strict";var r=n(2),o=n(9),i=n(12),s=n(13),u=n(14),a=n(10),c="undefined"!=typeof window&&window.btoa&&window.btoa.bind(window)||n(15);e.exports=function(e){return new Promise(function(t,f){var p=e.data,d=e.headers;r.isFormData(p)&&delete d["Content-Type"];var l=new XMLHttpRequest,h="onreadystatechange",m=!1;if("undefined"==typeof window||!window.XDomainRequest||"withCredentials"in l||u(e.url)||(l=new window.XDomainRequest,h="onload",m=!0,l.onprogress=function(){},l.ontimeout=function(){}),e.auth){var y=e.auth.username||"",w=e.auth.password||"";d.Authorization="Basic "+c(y+":"+w)}if(l.open(e.method.toUpperCase(),i(e.url,e.params,e.paramsSerializer),!0),l.timeout=e.timeout,l[h]=function(){if(l&&(4===l.readyState||m)&&(0!==l.status||l.responseURL&&0===l.responseURL.indexOf("file:"))){var n="getAllResponseHeaders"in l?s(l.getAllResponseHeaders()):null,r=e.responseType&&"text"!==e.responseType?l.response:l.responseText,i={data:r,status:1223===l.status?204:l.status,statusText:1223===l.status?"No Content":l.statusText,headers:n,config:e,request:l};o(t,f,i),l=null}},l.onerror=function(){f(a("Network Error",e,null,l)),l=null},l.ontimeout=function(){f(a("timeout of "+e.timeout+"ms exceeded",e,"ECONNABORTED",l)),l=null},r.isStandardBrowserEnv()){var g=n(16),v=(e.withCredentials||u(e.url))&&e.xsrfCookieName?g.read(e.xsrfCookieName):void 0;v&&(d[e.xsrfHeaderName]=v)}if("setRequestHeader"in l&&r.forEach(d,function(e,t){"undefined"==typeof p&&"content-type"===t.toLowerCase()?delete d[t]:l.setRequestHeader(t,e)}),e.withCredentials&&(l.withCredentials=!0),e.responseType)try{l.responseType=e.responseType}catch(t){if("json"!==e.responseType)throw t}"function"==typeof e.onDownloadProgress&&l.addEventListener("progress",e.onDownloadProgress),"function"==typeof e.onUploadProgress&&l.upload&&l.upload.addEventListener("progress",e.onUploadProgress),e.cancelToken&&e.cancelToken.promise.then(function(e){l&&(l.abort(),f(e),l=null)}),void 0===p&&(p=null),l.send(p)})}},function(e,t,n){"use strict";var r=n(10);e.exports=function(e,t,n){var o=n.config.validateStatus;n.status&&o&&!o(n.status)?t(r("Request failed with status code "+n.status,n.config,null,n.request,n)):e(n)}},function(e,t,n){"use strict";var r=n(11);e.exports=function(e,t,n,o,i){var s=new Error(e);return r(s,t,n,o,i)}},function(e,t){"use strict";e.exports=function(e,t,n,r,o){return e.config=t,n&&(e.code=n),e.request=r,e.response=o,e}},function(e,t,n){"use strict";function r(e){return encodeURIComponent(e).replace(/%40/gi,"@").replace(/%3A/gi,":").replace(/%24/g,"$").replace(/%2C/gi,",").replace(/%20/g,"+").replace(/%5B/gi,"[").replace(/%5D/gi,"]")}var o=n(2);e.exports=function(e,t,n){if(!t)return e;var i;if(n)i=n(t);else if(o.isURLSearchParams(t))i=t.toString();else{var s=[];o.forEach(t,function(e,t){null!==e&&"undefined"!=typeof e&&(o.isArray(e)&&(t+="[]"),o.isArray(e)||(e=[e]),o.forEach(e,function(e){o.isDate(e)?e=e.toISOString():o.isObject(e)&&(e=JSON.stringify(e)),s.push(r(t)+"="+r(e))}))}),i=s.join("&")}return i&&(e+=(e.indexOf("?")===-1?"?":"&")+i),e}},function(e,t,n){"use strict";var r=n(2),o=["age","authorization","content-length","content-type","etag","expires","from","host","if-modified-since","if-unmodified-since","last-modified","location","max-forwards","proxy-authorization","referer","retry-after","user-agent"];e.exports=function(e){var t,n,i,s={};return e?(r.forEach(e.split("\n"),function(e){if(i=e.indexOf(":"),t=r.trim(e.substr(0,i)).toLowerCase(),n=r.trim(e.substr(i+1)),t){if(s[t]&&o.indexOf(t)>=0)return;"set-cookie"===t?s[t]=(s[t]?s[t]:[]).concat([n]):s[t]=s[t]?s[t]+", "+n:n}}),s):s}},function(e,t,n){"use strict";var r=n(2);e.exports=r.isStandardBrowserEnv()?function(){function e(e){var t=e;return n&&(o.setAttribute("href",t),t=o.href),o.setAttribute("href",t),{href:o.href,protocol:o.protocol?o.protocol.replace(/:$/,""):"",host:o.host,search:o.search?o.search.replace(/^\?/,""):"",hash:o.hash?o.hash.replace(/^#/,""):"",hostname:o.hostname,port:o.port,pathname:"/"===o.pathname.charAt(0)?o.pathname:"/"+o.pathname}}var t,n=/(msie|trident)/i.test(navigator.userAgent),o=document.createElement("a");return t=e(window.location.href),function(n){var o=r.isString(n)?e(n):n;return o.protocol===t.protocol&&o.host===t.host}}():function(){return function(){return!0}}()},function(e,t){"use strict";function n(){this.message="String contains an invalid character"}function r(e){for(var t,r,i=String(e),s="",u=0,a=o;i.charAt(0|u)||(a="=",u%1);s+=a.charAt(63&t>>8-u%1*8)){if(r=i.charCodeAt(u+=.75),r>255)throw new n;t=t<<8|r}return s}var o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";n.prototype=new Error,n.prototype.code=5,n.prototype.name="InvalidCharacterError",e.exports=r},function(e,t,n){"use strict";var r=n(2);e.exports=r.isStandardBrowserEnv()?function(){return{write:function(e,t,n,o,i,s){var u=[];u.push(e+"="+encodeURIComponent(t)),r.isNumber(n)&&u.push("expires="+new Date(n).toGMTString()),r.isString(o)&&u.push("path="+o),r.isString(i)&&u.push("domain="+i),s===!0&&u.push("secure"),document.cookie=u.join("; ")},read:function(e){var t=document.cookie.match(new RegExp("(^|;\\s*)("+e+")=([^;]*)"));return t?decodeURIComponent(t[3]):null},remove:function(e){this.write(e,"",Date.now()-864e5)}}}():function(){return{write:function(){},read:function(){return null},remove:function(){}}}()},function(e,t,n){"use strict";function r(){this.handlers=[]}var o=n(2);r.prototype.use=function(e,t){return this.handlers.push({fulfilled:e,rejected:t}),this.handlers.length-1},r.prototype.eject=function(e){this.handlers[e]&&(this.handlers[e]=null)},r.prototype.forEach=function(e){o.forEach(this.handlers,function(t){null!==t&&e(t)})},e.exports=r},function(e,t,n){"use strict";function r(e){e.cancelToken&&e.cancelToken.throwIfRequested()}var o=n(2),i=n(19),s=n(20),u=n(6),a=n(21),c=n(22);e.exports=function(e){r(e),e.baseURL&&!a(e.url)&&(e.url=c(e.baseURL,e.url)),e.headers=e.headers||{},e.data=i(e.data,e.headers,e.transformRequest),e.headers=o.merge(e.headers.common||{},e.headers[e.method]||{},e.headers||{}),o.forEach(["delete","get","head","post","put","patch","common"],function(t){delete e.headers[t]});var t=e.adapter||u.adapter;return t(e).then(function(t){return r(e),t.data=i(t.data,t.headers,e.transformResponse),t},function(t){return s(t)||(r(e),t&&t.response&&(t.response.data=i(t.response.data,t.response.headers,e.transformResponse))),Promise.reject(t)})}},function(e,t,n){"use strict";var r=n(2);e.exports=function(e,t,n){return r.forEach(n,function(n){e=n(e,t)}),e}},function(e,t){"use strict";e.exports=function(e){return!(!e||!e.__CANCEL__)}},function(e,t){"use strict";e.exports=function(e){return/^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(e)}},function(e,t){"use strict";e.exports=function(e,t){return t?e.replace(/\/+$/,"")+"/"+t.replace(/^\/+/,""):e}},function(e,t){"use strict";function n(e){this.message=e}n.prototype.toString=function(){return"Cancel"+(this.message?": "+this.message:"")},n.prototype.__CANCEL__=!0,e.exports=n},function(e,t,n){"use strict";function r(e){if("function"!=typeof e)throw new TypeError("executor must be a function.");var t;this.promise=new Promise(function(e){t=e});var n=this;e(function(e){n.reason||(n.reason=new o(e),t(n.reason))})}var o=n(23);r.prototype.throwIfRequested=function(){if(this.reason)throw this.reason},r.source=function(){var e,t=new r(function(t){e=t});return{token:t,cancel:e}},e.exports=r},function(e,t){"use strict";e.exports=function(e){return function(t){return e.apply(null,t)}}}])});
-//# sourceMappingURL=axios.min.map
-axios.get('http://dev.nestegg.eu/api').then(console.log)
-</script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monero Peza</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script defer src="js/fontawesome-all.min.js"></script>
+    <style type="text/css">
+      #nav-toggle-state {
+        display: none;
+      }
+
+      #nav-toggle-state:checked ~ .nav-menu {
+        display: block;
+      }
+    </style>
+    <style type="text/css">
+      .hero-bkg-animated {
+        background: white url(https://i.imgur.com/6rXORJC.png) repeat 0 0;
+        box-sizing: border-box;
+        padding-top: 5vh;
+        -webkit-animation: slide 20s linear infinite;
+      }
+
+      .hero-bkg-animated h1 {
+        font-family: sans-serif;
+      }
+
+      @-webkit-keyframes slide {
+          from { background-position: 0 0; }
+          to { background-position: -400px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    
+
+
+
+<!-- *********************
+     *        HERO       *  
+     ********************* -->
+
+<div class="notification is-warning" data-bulma="notification" style="margin-bottom: -6vh">
+  <button class="delete"></button>
+  <strong>WARNING: THIS IS FOR EXCLUSIVE USE WITH NESTEGG's EXPERIMENT</strong>. <em>More information coming soon.</em> 
+</div>
+
+
+    <section class="hero hero-bkg-animated is-fullheight">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                      
+                      <svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+                          <desc>Created with Sketch.</desc>
+                          <defs></defs>
+                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                              <g id="Desktop-HD" transform="translate(-566.000000, -208.000000)" fill-rule="nonzero">
+                                  <g id="noun_112591_cc-copy" transform="translate(566.000000, 208.000000)">
+                                      <path d="M7.5,12.9571429 C4.06666667,12.9571429 1.13333333,11.1 0,8.5 C0,8.55064935 0,8.63506494 0,8.68571429 C0,12.1805195 3.36666667,15 7.5,15 C11.6333333,15 15,12.1805195 15,8.68571429 C15,8.63506494 15,8.55064935 15,8.5 C13.8666667,11.1 10.9333333,12.9571429 7.5,12.9571429 Z" id="Shape" fill="#046F92"></path>
+                                      <path d="M7.5,0 C3.36666667,0 0,2.8 0,6.25 C0,9.7 3.36666667,12.5 7.5,12.5 C11.6333333,12.5 15,9.7 15,6.25 C15,2.8 11.6333333,0 7.5,0 Z M10.95,9.16666667 C9.05,10.0833333 6.66666667,9.86666667 5.1,8.66666667 L3.68333333,9.35 L3.38333333,8.43333333 L4.35,7.96666667 C4.26666667,7.83333333 4.16666667,7.73333333 4.11666667,7.63333333 C4.06666667,7.53333333 3.98333333,7.43333333 3.9,7.3 L2.66666667,7.88333333 L2.46666667,7.1 L3.61666667,6.55 C3.06666667,4.7 4.05,3.01666667 5.96666667,2.1 C6.68333333,1.75 7.43333333,1.55 8.2,1.53333333 L8.58333333,2.73333333 C7.91666667,2.7 7.26666667,2.85 6.66666667,3.13333333 C5.43333333,3.71666667 4.78333333,4.78333333 4.91666667,5.93333333 L8.98333333,3.96666667 L9.18333333,4.75 L5.13333333,6.71666667 C5.2,6.85 5.28333333,6.96666667 5.35,7.05 C5.4,7.13333333 5.5,7.25 5.58333333,7.38333333 L9.46666667,5.5 L9.76666667,6.41666667 L6.41666667,8.05 C7.46666667,8.61666667 9.03333333,8.75 10.25,8.16666667 C10.9833333,7.81666667 11.4833333,7.3 11.8666667,6.63333333 L12.7166667,7.85 C12.2333333,8.38333333 11.65,8.83333333 10.95,9.16666667 Z" id="Shape" fill="#0087B3"></path>
+                                  </g>
+                              </g>
+                          </g>
+                      </svg> 
+                <span style="margin-left: 7px"><strong>(Rinkeby) NestEgg EURO tokens</strong></span>
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                <!-- <a class="navbar-item is-active">
+                  <i class="fas fa-home"></i>
+                </a> -->
+                <a href="http://lockbox.nestegg.eu" class="navbar-item">
+                  <!-- <i class="fab fa-gitter" style="margin-right: 7px"></i> --> the Lockbox
+                </a>
+                <!-- <a href="https://www.reddit.com/r/xmrpeza/" class="navbar-item">
+                  <i class="fab fa-reddit" style="margin-right: 7px"></i> Community
+                </a>
+                <a href="https://twitter.com/xmrpeza" class="navbar-item">
+                  <i class="fab fa-twitter" style="margin-right: 7px"></i> Updates
+                </a> -->
+                <!-- <a class="navbar-item">
+                  <i class="fab fa-medium-m" style="margin-right: 7px"></i> Blog
+                </a> -->
+                
+                <!-- <span class="navbar-item">
+                  <a href="https://github.com/xmrpeza" class="button is-dark is-inverted">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>The Goods</span>
+                  </a>
+                </span> -->
+
+
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Hero content: will be in the middle -->
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          
+          
+          <svg width="75px" height="76px" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+              <desc>Created for th3build</desc>
+              <defs></defs>
+              <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g id="Desktop-HD" transform="translate(-566.000000, -376.000000)" fill-rule="nonzero">
+                      <g id="noun_112591_cc-copy-2" transform="translate(566.000000, 376.000000)">
+                          <path d="M37.5,65 C20.3333333,65 5.66666667,55.8333333 0,43 C0,43.25 0,43.6666667 0,43.9166667 C0,61.1666667 16.8333333,75.0833333 37.5,75.0833333 C58.1666667,75.0833333 75,61.1666667 75,43.9166667 C75,43.6666667 75,43.25 75,43 C69.3333333,55.8333333 54.6666667,65 37.5,65 Z" id="Shape" fill="#046F92"></path>
+                          <path d="M37.5,0 C16.8333333,0 0,14 0,31.25 C0,48.5 16.8333333,62.5 37.5,62.5 C58.1666667,62.5 75,48.5 75,31.25 C75,14 58.1666667,0 37.5,0 Z M54.75,45.8333333 C45.25,50.4166667 33.3333333,49.3333333 25.5,43.3333333 L18.4166667,46.75 L16.9166667,42.1666667 L21.75,39.8333333 C21.3333333,39.1666667 20.8333333,38.6666667 20.5833333,38.1666667 C20.3333333,37.6666667 19.9166667,37.1666667 19.5,36.5 L13.3333333,39.4166667 L12.3333333,35.5 L18.0833333,32.75 C15.3333333,23.5 20.25,15.0833333 29.8333333,10.5 C33.4166667,8.75 37.1666667,7.75 41,7.66666667 L42.9166667,13.6666667 C39.5833333,13.5 36.3333333,14.25 33.3333333,15.6666667 C27.1666667,18.5833333 23.9166667,23.9166667 24.5833333,29.6666667 L44.9166667,19.8333333 L45.9166667,23.75 L25.6666667,33.5833333 C26,34.25 26.4166667,34.8333333 26.75,35.25 C27,35.6666667 27.5,36.25 27.9166667,36.9166667 L47.3333333,27.5 L48.8333333,32.0833333 L32.0833333,40.25 C37.3333333,43.0833333 45.1666667,43.75 51.25,40.8333333 C54.9166667,39.0833333 57.4166667,36.5 59.3333333,33.1666667 L63.5833333,39.25 C61.1666667,41.9166667 58.25,44.1666667 54.75,45.8333333 Z" id="Shape" fill="#0087B3"></path>
+                      </g>
+                  </g>
+              </g>
+          </svg>
+
+          <h1 class="title">
+            NestEgg EURO Token
+          </h1>
+          <h2 class="subtitle">
+            Make sure you are using the <strong>Rinkeby</strong> testnet.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+<!-- //////////////////////
+    //    // HERO       //  
+   ////////////////////// -->
+
+    <!-- <footer class="footer has-text-centered">
+      <div class="container">
+         <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>
+              <strong class="has-text-weight-semibold">
+                <a href="https://www.npmjs.com/package/bulma-start">bulma-start@0.0.1</a>
+              </strong>
+            </p>
+            <p>
+              <small>
+                Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+              </small>
+            </p>
+            <p style="margin-top: 1rem;">
+              <a href="http://bulma.io">
+                <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <script type="text/javascript" src="lib/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/jquery.easing.min.js"></script>
+      <script src="js/scrolling-nav.js"></script>
+    <script type="text/javascript">
+           document.addEventListener('DOMContentLoaded', function () {
+
+             // Get all "navbar-burger" elements
+             var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+             // Check if there are any navbar burgers
+             if ($navbarBurgers.length > 0) {
+
+               // Add a click event on each of them
+               $navbarBurgers.forEach(function ($el) {
+                 $el.addEventListener('click', function () {
+
+                   // Get the target from the "data-target" attribute
+                   var target = $el.dataset.target;
+                   var $target = document.getElementById(target);
+
+                   // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+                   $el.classList.toggle('is-active');
+                   $target.classList.toggle('is-active');
+
+                 });
+               });
+             }
+
+           });
+       </script>
+  </body>
 </html>
