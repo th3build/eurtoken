@@ -17,7 +17,7 @@ e.exports=function(e){return null!=e&&(n(e)||r(e)||!!e._isBuffer)}},function(e,t
 // axios.get('http://dev.nestegg.eu/api/').then(function(res){console.log(res.data) })
 function doAxios() {
 
-	axios.get('http://dev.nestegg.eu/api/reservations/getEUR/' + document.getElementById('eurvalue').value + '/' + document.getElementById('etheraddress').value).then(function(res){alert('Successfully submitted. Please wait a few minutes and check your token balance on Rinkeby Etherscan.') })
+	axios.get('http://confirm.nestegg.eu/api/reservations/getEUR/' + document.getElementById('eurvalue').value + '/' + document.getElementById('etheraddress').value).then(function(res){alert('Successfully submitted. Please wait a few minutes and check your token balance on Rinkeby Etherscan.') })
 }
 </script>
 
